@@ -1,0 +1,126 @@
+:root {
+    --accent: #00d2ff;
+    --accent-alt: #3a7bd5;
+    --bg: #030303;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Background Effects */
+.bg-gradient {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 80% 20%, #1a1a2e 0%, transparent 40%),
+                radial-gradient(circle at 10% 80%, #0f172a 0%, transparent 40%);
+    z-index: -1;
+}
+
+.grain {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Header */
+header {
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 2px; }
+.logo span { color: var(--accent); }
+
+nav a { color: #aaa; text-decoration: none; margin-right: 30px; font-size: 0.9rem; transition: 0.3s; }
+nav a:hover { color: var(--accent); }
+
+/* Hero Section */
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; }
+
+h1 { font-size: 4rem; line-height: 1; margin: 20px 0; font-weight: 800; }
+.glow-text {
+    background: linear-gradient(to right, var(--accent), var(--accent-alt));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p { color: #888; font-size: 1.2rem; margin-bottom: 30px; }
+
+.cta-primary {
+    background: var(--accent);
+    color: black;
+    padding: 15px 35px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
+}
+
+.hero-visual { position: relative; }
+.hero-visual img {
+    width: 100%;
+    border-radius: 30px;
+    mask-image: linear-gradient(to bottom, black 80%, transparent);
+    transition: transform 0.2s ease-out;
+}
+
+.floating-sphere {
+    position: absolute;
+    width: 300px; height: 300px;
+    background: var(--accent);
+    filter: blur(100px);
+    opacity: 0.2;
+    z-index: -1;
+    animation: float 6s infinite ease-in-out;
+}
+
+/* Glass Cards */
+.services { padding: 100px 0; }
+.glass-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    padding: 40px;
+    border-radius: 24px;
+    transition: 0.4s;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-10px);
+    border-color: var(--accent);
+}
+
+.icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+}
+
+/* Reveal Animation Class */
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
+.reveal.active { opacity: 1; transform: translateY(0); }
